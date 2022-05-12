@@ -45,15 +45,15 @@ func TestClient(t *testing.T) {
 	filelen := conv.Int64(len(bs))
 	h := sha256.New()
 	h.Write(bs)
-	myhash := fmt.Sprintf("%x", h.Sum(nil))
-	log.Println("myhash:", myhash)
+	fileHash := fmt.Sprintf("%x", h.Sum(nil))
+	log.Println("fileHash:", fileHash)
 	start := time.Now()
 	r, err := client.Transfer(ctx, &files.FileReq{
 		DstDir:   "ehw",
 		ProjName: "dsaudg",
 		Name:     "dasgf",
 		ProjType: 1,
-		Hash:     myhash,
+		Hash:     fileHash,
 		Filelen:  filelen,
 		IfReboot: false,
 		File:     bs,
