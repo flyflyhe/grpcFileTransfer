@@ -1,0 +1,22 @@
+syntax = "proto3";
+option go_package = "internal/rpc/files";
+
+service FileService {
+  rpc Transfer(FileReq) returns (FileRes);
+}
+
+message FileReq {
+    string dstDir = 1;
+    string projName =2;
+    string name = 3;
+    int32 projType = 4;
+    bool ifReboot =5;
+    string hash = 6;
+    int64 filelen = 7;
+    bytes file = 8;
+}
+
+message FileRes {
+    bool status = 1;
+    string message = 2;
+}
